@@ -2,4 +2,4 @@
 
 service hostapd start
 service dnsmasq start
-ifup ap0
+wirelessinit.sh
