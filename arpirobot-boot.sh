@@ -1,6 +1,6 @@
 #!/bin/bash
 
 sleep 10
-/usr/local/bin/arpirobot-start.sh &
+su - pi -c "/usr/local/bin/arpirobot-start.sh &"
 
 exit 0
