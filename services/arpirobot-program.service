@@ -5,7 +5,7 @@ After=multi-user.target
 [Service]
 Type=simple
 User=pi
-ExecStart=/usr/local/bin/arpirobot-start.sh
+ExecStart=/usr/local/bin/arpirobot-launch.sh
 
 [Install]
 WantedBy=multi-user.target
