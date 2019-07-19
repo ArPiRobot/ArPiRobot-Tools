@@ -20,7 +20,7 @@ chmod +x /usr/local/bin/*.sh
 # Install services
 cp $DIR/services/*.service /lib/systemd/system/
 systemctl daemon-reload
-SERVICES = $DIR/services/*.service
+SERVICES=$DIR/services/*.service
 for s in $SERVICES
 do
     systemctl enable `basename $s`
