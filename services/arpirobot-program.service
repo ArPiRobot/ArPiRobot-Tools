@@ -1,0 +1,11 @@
+[Unit]
+Description=Service to start the arpirobot program
+After=multi-user.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/usr/local/bin/arpirobot-start.sh
+
+[Install]
+WantedBy=multi-user.target
