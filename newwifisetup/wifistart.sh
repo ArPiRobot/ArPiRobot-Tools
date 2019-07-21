@@ -2,6 +2,10 @@
 
 # Adapted script from https://lb.raspberrypi.org/forums/viewtopic.php?t=211542
 
+# Eliminate warnings that dhcpcd has changed on disk
+echo "Relaoding systemd daemon..."
+systemctl daemon-reload
+
 # Redundant stops to make sure services are not running
 echo "Stopping network services (if running)..."
 systemctl stop hostapd.service

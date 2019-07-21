@@ -4,6 +4,7 @@ Description=WiFi station and AP mode setup service.
 [Service]
 Type=forking
 ExecStart=/bin/bash /usr/local/bin/dowifistart.sh
+ExecStop=/bin/bash /usr/local/bin/wifistop.sh
 
 [Install]
 WantedBy=multi-user.target
