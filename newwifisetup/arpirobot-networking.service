@@ -1,0 +1,9 @@
+[Unit]
+Description=WiFi station and AP mode setup service.
+
+[Service]
+Type=forking
+ExecStart=/bin/bash /usr/local/bin/dowifistart.sh
+
+[Install]
+WantedBy=multi-user.target
