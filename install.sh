@@ -18,9 +18,14 @@ ln $DIR/helper-scripts/*.sh /usr/local/bin
 chmod +x /usr/local/bin/*.sh
 
 # Install services
+SERVICES=$DIR/services/*.service
+for s in $SERVICES
+do
+    systemctl stop `basename $s`
+    systemctl disable `basename $s`
+done
 cp $DIR/services/*.service /lib/systemd/system/
 systemctl daemon-reload
-SERVICES=$DIR/services/*.service
 for s in $SERVICES
 do
     systemctl enable `basename $s`
