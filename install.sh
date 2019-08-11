@@ -14,7 +14,7 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 # Link scripts
-ln $DIR/helper-scripts/*.sh /usr/local/bin
+ln -f $DIR/helper-scripts/*.sh /usr/local/bin
 chmod +x /usr/local/bin/*.sh
 
 # Install services
