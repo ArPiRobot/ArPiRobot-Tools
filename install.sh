@@ -13,8 +13,8 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
-# Link scripts
-ln -f $DIR/helper-scripts/*.sh /usr/local/bin
+# Install scripts
+cp $DIR/helper-scripts/*.sh /usr/local/bin
 chmod +x /usr/local/bin/*.sh
 
 # Install services
@@ -31,4 +31,5 @@ do
     systemctl enable `basename $s`
 done
 
-
+# Copy version text file
+cp $DIR/version.txt /usr/local/raspbian-tools-version.txt
