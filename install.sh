@@ -15,7 +15,9 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 # Install scripts
 cp $DIR/helper-scripts/*.sh /usr/local/bin
-chmod +x /usr/local/bin/*.sh
+chmod 755 /usr/local/bin/*.sh
+cp $DIR/helper-scripts/*.py /usr/local/bin
+chmod 755 /usr/local/bin/*.py
 
 # Install services
 SERVICES=$DIR/services/*.service
