@@ -18,9 +18,12 @@
 # 0.0.5
 # 0.0.3
 
-# Print image version (no newline)
-head -n 1 /usr/local/arpirobot-image-version.txt | sed -z '$ s/\n$//'
-printf "\n"
+# Print image version
+VERSION=$(head -n 1 /usr/local/arpirobot-image-version.txt 2>/dev/null | sed -z '$ s/\n$//')
+if [ -z "$VERSION" ]; then
+    VERSION="UNKNOWN"
+fi
+printf "$VERSION\n"
 
 # Print python version
 python3 --version | sed -z 's/Python //g'
@@ -31,8 +34,18 @@ python3 --version | sed -z 's/Python //g'
 # cat `python3 -c "import arpirobot as a;print(a.__path__[0])"`/../ArPiRobot_PythonLib-*.dist-info/METADATA | awk '$1 ~ /^Version:/' | sed -z 's/Version: //g'
 
 ARRAY=( `python3 -c "import arpirobot as a;print(a.__path__[0])"`/../ArPiRobot_PythonLib-*.dist-info/METADATA )
-cat `echo ${ARRAY[-1]}` | awk '$1 ~ /^Version:/' | sed -z 's/Version: //g'
+SELECTED_DIR=${ARRAY[-1]}
+if [ -f "$SELECTED_DIR" ]; then
+    PYLIB_VER=$(cat $SELECTED_DIR | awk '$1 ~ /^Version:/' | sed -z 's/Version: //g')
+else
+    PYLIB_VER="UNKNOWN"
+fi
+echo $PYLIB_VER
 
 # Print raspbian tools version (no newline)
-head -n 1 /usr/local/raspbian-tools-version.txt | sed -z '$ s/\n$//'
-printf "\n"
+VERSION=$(head -n 1 /usr/local/raspbian-tools-version.txt 2> /dev/null | sed -z '$ s/\n$//')
+if [ -z "$VERSION" ]; then
+    VERSION="UNKNOWN"
+fi
+printf "$VERSION\n"
+
