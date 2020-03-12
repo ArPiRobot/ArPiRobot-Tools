@@ -4,15 +4,15 @@
 sudo chmod 755 /etc/wpa_supplicant/wpa_supplicant.conf
 
 # Read SSID and password from file
-SSID_LINE=$(cat /etc/hostapd/hostapd.conf | grep ssid)
-PASS_LINE=$(cat /etc/hostapd/hostapd.conf | grep wpa_passphrase)
-SSID=$(echo $SSID_LINE | sed -z 's/ssid=//g')
-PASS=$(echo $PASS_LINE | sed -z 's/wpa_passphrase=//g')
+SSID_LINE=$(cat /etc/hostapd/hostapd.conf | grep ssid=)
+PASS_LINE=$(cat /etc/hostapd/hostapd.conf | grep wpa_passphrase=)
+SSID=$(echo "$SSID_LINE" | sed -z 's/ssid=//g')
+PASS=$(echo "$PASS_LINE" | sed -z 's/wpa_passphrase=//g')
 
 # If no arguments print the current SSID then the current password (WPA2)
 if [ $# -eq 0 ]; then
-    echo $SSID
-    echo $PASS
+    echo "$SSID"
+    echo "$PASS"
     exit 0
 else
     if [ $# -ne 2 ]; then
