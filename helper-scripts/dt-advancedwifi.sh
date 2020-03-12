@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Fix permissions just in case
-sudo chmod 755 /etc/wpa_supplicant/wpa_supplicant.conf
-sudo chmod 755 /etc/hostapd/hostapd.conf
+sudo chmod 755 /etc/wpa_supplicant/wpa_supplicant.conf > /dev/null 2>&1
+sudo chmod 755 /etc/hostapd/hostapd.conf > /dev/null 2>&1
 
 # Read data from files
 AP_COUNTRY_LINE=$(cat /etc/hostapd/hostapd.conf | grep country_code=)
@@ -21,6 +21,7 @@ CLIENT_COUNTRY=$(echo "$CLIENT_CODE_LINE" | sed -z 's/country=//g')
 
 if [ $# -eq 0 ]; then
     printf "$AP_COUNTRY\n$AP_CHANNEL\n$CLIENT_COUNTRY\n"
+    exit 0
 else
     if [ $# -ne 3 ]; then
 	echo "Either call with zero or three arguments!"

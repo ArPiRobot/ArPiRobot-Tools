@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Fix file permissions (this was an issue on older images)
-sudo chmod 755 /etc/wpa_supplicant/wpa_supplicant.conf
+sudo chmod 755 /etc/wpa_supplicant/wpa_supplicant.conf > /dev/null 2>&1
 
 # Read SSID and password from file
 SSID_LINE=$(cat /etc/hostapd/hostapd.conf | grep ssid=)
