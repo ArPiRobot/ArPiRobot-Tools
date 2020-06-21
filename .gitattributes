@@ -1,0 +1,16 @@
+* text=auto
+
+# For sh scripts use LF even on windows
+*.sh text eol=lf
+
+# Same for python scripts
+*.py text eol=lf
+
+# Same for service definitions
+*.service text eol=lf
+
+# Same for version txt file
+version.txt text eol=lf
+
+# This is binary not text
+*.zip binary
