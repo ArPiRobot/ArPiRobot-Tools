@@ -42,7 +42,7 @@
 
 
 # Print image version
-VERSION=$(head -n 1 /usr/local/arpirobot-image-version.txt 2>/dev/null | sed -z '$ s/\n$//')
+VERSION=$(head -n 1 /usr/local/arpirobot-tools-version.txt 2>/dev/null | sed -z '$ s/\n$//')
 if [ -z "$VERSION" ]; then
     VERSION="UNKNOWN"
 fi

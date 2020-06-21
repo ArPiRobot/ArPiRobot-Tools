@@ -58,4 +58,4 @@ do
 done
 
 # Copy version text file
-cp $DIR/version.txt /usr/local/raspbian-tools-version.txt
+cp $DIR/version.txt /usr/local/arpirobot-tools-version.txt
