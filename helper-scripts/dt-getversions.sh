@@ -24,12 +24,14 @@
 #              Python interpreter version
 #              Python library version
 #              Raspbian tools version
+#              Update version (if file exists, won't  for older updates)
 # 
 #              Output must match following example format
 #              IMAGE_VERSION_NAME
 #              PYTHON VERSION STRING from python3 --version
 #              PYLIB VERSION NAME
 #              RASPBIAN TOOLS VERSION
+#              UPDATE_VERSION_NAME
 #
 #              Example:
 #              Beta2
@@ -72,3 +74,9 @@ if [ -z "$VERSION" ]; then
 fi
 printf "$VERSION\n"
 
+# Print update version
+VERSION=$(head -n 1 /usr/local/arpirobot-update-version.txt 2> /dev/null | sed -z '$ s/\n$//')
+if [ -z "$VERSION" ]; then
+    VERSION="UNKNOWN"
+fi
+printf "$VERSION\n"
