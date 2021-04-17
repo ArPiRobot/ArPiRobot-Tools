@@ -37,4 +37,4 @@ rm -rf /home/pi/arpirobot/*
 mkdir -p /home/pi/arpirobot/
 cp -r "$PROJ_FOLDER"/* ~/arpirobot/
 chmod +x ~/arpirobot/*
-sed -i.bak 's/\r$//' ~/arpirobot/main.sh
+sed -i 's/\r$//' ~/arpirobot/main.sh
