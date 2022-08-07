@@ -58,7 +58,7 @@ do
     systemctl disable `basename $s`
 done
 cp $DIR/services/*.service /lib/systemd/system/
-sed -i "s/USERNAME_HERE/${username}/g" /usr/local/bin/arpirobot-program.service
+sed -i "s/USERNAME_HERE/${username}/g" /lib/systemd/system/arpirobot-program.service
 systemctl daemon-reload
 for s in $SERVICES
 do
