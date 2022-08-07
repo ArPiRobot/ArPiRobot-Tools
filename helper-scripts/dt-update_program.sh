@@ -33,8 +33,8 @@ fi
 
 PROJ_FOLDER="$1"
 
-rm -rf /home/pi/arpirobot/*
-mkdir -p /home/pi/arpirobot/
+rm -rf ~/arpirobot/*
+mkdir -p ~/arpirobot/
 cp -r "$PROJ_FOLDER"/* ~/arpirobot/
 chmod +x ~/arpirobot/*
 dos2unix ~/arpirobot/main.sh

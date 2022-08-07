@@ -29,6 +29,13 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
+if [ "$#" -ne 1 ]; then
+   echo "Exactly one parameter required: integration user."
+   exit 2
+fi
+username="$1"
+
+
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
@@ -51,6 +58,7 @@ do
     systemctl disable `basename $s`
 done
 cp $DIR/services/*.service /lib/systemd/system/
+sed -i "s/USERNAME_HERE/${username}/g" /usr/local/bin/arpirobot-program.service
 systemctl daemon-reload
 for s in $SERVICES
 do
