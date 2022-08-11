@@ -21,3 +21,11 @@ with fileinput.FileInput("/etc/hostapd/hostapd.conf", inplace=True, backup='.bak
             print("channel=" + sys.argv[4])
         else:
             print(line, end='')
+
+with fileinput.FileInput("/etc/wpa_supplicant/wpa_supplicant.conf", inplace=True, backup='.bak') as file:
+    for line in file:
+        if line.startswith("country="):
+            print("country=" + sys.argv[3])
+        else:
+            print(line, end='')
+
