@@ -2,6 +2,7 @@
 
 import sys
 import fileinput
+import os
 
 # four args plus name of script
 # dt-wifi_ap_replace.py SSID PASSWORD COUNTRY_CODE CHANNEL
@@ -22,10 +23,11 @@ with fileinput.FileInput("/etc/hostapd/hostapd.conf", inplace=True, backup='.bak
         else:
             print(line, end='')
 
-with fileinput.FileInput("/etc/wpa_supplicant/wpa_supplicant.conf", inplace=True, backup='.bak') as file:
-    for line in file:
-        if line.startswith("country="):
-            print("country=" + sys.argv[3])
-        else:
-            print(line, end='')
+if os.path.exists("/etc/wpa_supplicant/wpa_supplicant.conf"):
+    with fileinput.FileInput("/etc/wpa_supplicant/wpa_supplicant.conf", inplace=True, backup='.bak') as file:
+        for line in file:
+            if line.startswith("country="):
+                print("country=" + sys.argv[3])
+            else:
+                print(line, end='')
 
