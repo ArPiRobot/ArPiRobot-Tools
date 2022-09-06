@@ -31,3 +31,10 @@ if os.path.exists("/etc/wpa_supplicant/wpa_supplicant.conf"):
             else:
                 print(line, end='')
 
+if os.path.exists("/etc/default/crda"):
+    with fileinput.FileInput("/etc/default/crda", inplace=True, backup=".bak") as file:
+        for line in file:
+            if line.startswith("REGDOMAIN="):
+                print("REGDOMAIN={}".format(sys.argv[3]))
+            else:
+                print(line, end='')
